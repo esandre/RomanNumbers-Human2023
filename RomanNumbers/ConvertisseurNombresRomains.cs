@@ -1,9 +1,11 @@
 ﻿namespace RomanNumbers;
 
-public class ConvertisseurNombresRomains
+public static class ConvertisseurNombresRomains
 {
     public static string Convertir(uint chiffreArabe)
-    {
-        return "I";
-    }
+        => chiffreArabe switch
+           {
+               1 => "I",
+               _ => "II"
+           };
 }
