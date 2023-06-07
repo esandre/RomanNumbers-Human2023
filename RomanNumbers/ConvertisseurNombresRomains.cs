@@ -6,6 +6,7 @@ public static class ConvertisseurNombresRomains
         => chiffreArabe switch
            {
                1 => "I",
-               _ => "II"
+               2 => "II",
+               _ => "III"
            };
 }

@@ -2,27 +2,17 @@ namespace RomanNumbers.Test;
 
 public class RomanNumberTest
 {
-    [Fact(DisplayName = "ETANT DONNE le chiffre 1 " +
+    [Theory(DisplayName = "ETANT DONNE le chiffre <nombreUnités> " +
                         "QUAND je le convertis en nombres romains " +
-                        "ALORS j'obtiens I")]
-    public void Test1()
+                        "ALORS j'obtiens <nombreUnités> fois I")]
+    [InlineData(1)]
+    [InlineData(2)]
+    [InlineData(3)]
+    public void TestUnité(uint nombreUnités)
     {
-        const uint chiffreArabe = 1;
-        
-        var nombreRomain = ConvertisseurNombresRomains.Convertir(chiffreArabe);
-        
-        Assert.Equal("I", nombreRomain);
-    }
+        var nombreRomain = ConvertisseurNombresRomains.Convertir(nombreUnités);
 
-    [Fact(DisplayName = "ETANT DONNE le chiffre 2 " +
-                        "QUAND je le convertis en nombres romains " +
-                        "ALORS j'obtiens II")]
-    public void Test2() // TODO : duplication 
-    {
-        const uint chiffreArabe = 2;
-
-        var nombreRomain = ConvertisseurNombresRomains.Convertir(chiffreArabe);
-        
-        Assert.Equal("II", nombreRomain);
+        var résultatAttendu = new string(Enumerable.Repeat('I', (int)nombreUnités).ToArray());
+        Assert.Equal(résultatAttendu, nombreRomain);
     }
 }
