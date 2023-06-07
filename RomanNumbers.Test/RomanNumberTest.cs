@@ -28,19 +28,17 @@ public class RomanNumberTest
         Assert.Equal("IV", nombreRomain);
     }
 
-    [Theory(DisplayName = "ETANT DONNE un nombre <nombreUnités> compris entre 5 et 6 " +
+    [Theory(DisplayName = "ETANT DONNE un nombre <nombreUnités> compris entre 5 et 8 " +
                          "QUAND je le convertis en nombres romains " +
                          "ALORS j'obtiens V plus <(nombreUnités-5)> fois I")]
     [InlineData(5)]
     [InlineData(6)]
+    [InlineData(7)]
+    [InlineData(8)]
     public void TestCinqPlusUnité(uint nombreUnités)
     {
-        // ETANT DONNE un nombre <n> compris entre 5 et 6
-
-        // QUAND je le convertis en nombres romains
         var nombreRomain = ConvertisseurNombresRomains.Convertir(nombreUnités);
-
-        // ALORS j'obtiens V plus <(n-5)> fois I
+        
         var suiteDeI = new string('I', (int) nombreUnités - 5);
         Assert.Equal("V" + suiteDeI, nombreRomain);
     }
