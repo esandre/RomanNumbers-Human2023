@@ -1,10 +1,9 @@
-﻿namespace RomanNumbers
+﻿namespace RomanNumbers;
+
+public class ConvertisseurNombresRomains
 {
-    public class ConvertisseurNombresRomains
+    public static string Convertir(uint chiffreArabe)
     {
-        public static string Convertir(uint chiffreArabe)
-        {
-            return "I";
-        }
+        return "I";
     }
 }
