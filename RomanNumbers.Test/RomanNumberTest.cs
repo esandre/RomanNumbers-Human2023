@@ -45,4 +45,20 @@ public class RomanNumberTest
         // ALORS j'obtiens V
         Assert.Equal("V", nombreRomain);
     }
+
+    [Fact(DisplayName = "ETANT DONNE le chiffre 6 " +
+                        "QUAND je le convertis en nombres romains " +
+                        "ALORS j'obtiens VI")]
+    public void TestSix()
+    {
+        // ETANT DONNE le chiffre 6
+        const uint chiffreArabe = 6;
+
+        // QUAND je le convertis en nombres romains
+        var nombreRomain = ConvertisseurNombresRomains.Convertir(chiffreArabe);
+
+        // ALORS j'obtiens V
+        Assert.Equal("VI", nombreRomain);
+    }
+
 }
