@@ -21,44 +21,27 @@ public class RomanNumberTest
                           "ALORS j'obtiens IV")]
     public void TestQuatre()
     {
-        // ETANT DONNE le chiffre 4
         const uint chiffreArabe = 4;
         
-        // QUAND je le convertis en nombres romains
         var nombreRomain = ConvertisseurNombresRomains.Convertir(chiffreArabe);
-
-        // ALORS j'obtiens IV
+        
         Assert.Equal("IV", nombreRomain);
     }
 
-    [Fact(DisplayName = "ETANT DONNE le chiffre 5 " +
+    [Theory(DisplayName = "ETANT DONNE un nombre <nombreUnités> compris entre 5 et 6 " +
                          "QUAND je le convertis en nombres romains " +
-                         "ALORS j'obtiens V")]
-    public void TestCinq()
+                         "ALORS j'obtiens V plus <(nombreUnités-5)> fois I")]
+    [InlineData(5)]
+    [InlineData(6)]
+    public void TestCinqPlusUnité(uint nombreUnités)
     {
-        // ETANT DONNE le chiffre 5
-        const uint chiffreArabe = 5;
+        // ETANT DONNE un nombre <n> compris entre 5 et 6
 
         // QUAND je le convertis en nombres romains
-        var nombreRomain = ConvertisseurNombresRomains.Convertir(chiffreArabe);
+        var nombreRomain = ConvertisseurNombresRomains.Convertir(nombreUnités);
 
-        // ALORS j'obtiens V
-        Assert.Equal("V", nombreRomain);
+        // ALORS j'obtiens V plus <(n-5)> fois I
+        var suiteDeI = new string('I', (int) nombreUnités - 5);
+        Assert.Equal("V" + suiteDeI, nombreRomain);
     }
-
-    [Fact(DisplayName = "ETANT DONNE le chiffre 6 " +
-                        "QUAND je le convertis en nombres romains " +
-                        "ALORS j'obtiens VI")]
-    public void TestSix()
-    {
-        // ETANT DONNE le chiffre 6
-        const uint chiffreArabe = 6;
-
-        // QUAND je le convertis en nombres romains
-        var nombreRomain = ConvertisseurNombresRomains.Convertir(chiffreArabe);
-
-        // ALORS j'obtiens V
-        Assert.Equal("VI", nombreRomain);
-    }
-
 }
