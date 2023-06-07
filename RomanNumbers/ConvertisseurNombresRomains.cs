@@ -7,9 +7,6 @@ public static class ConvertisseurNombresRomains
            {
                <= 3 => new string('I', (int)chiffreArabe),
                4    => "IV",
-               5    => "V",
-               6    => "VI",
-               7    => "VII",
-               _    => "VIII"
+               _    => "V" + Convertir(chiffreArabe - 5)
            };
 }
