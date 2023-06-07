@@ -15,4 +15,19 @@ public class RomanNumberTest
         var résultatAttendu = new string(Enumerable.Repeat('I', (int)nombreUnités).ToArray());
         Assert.Equal(résultatAttendu, nombreRomain);
     }
+
+    [Fact(DisplayName = "ETANT DONNE le chiffre 4 " +
+                          "QUAND je le convertis en nombres romains " +
+                          "ALORS j'obtiens IV")]
+    public void TestQuatre()
+    {
+        // ETANT DONNE le chiffre 4
+        const uint chiffreArabe = 4;
+        
+        // QUAND je le convertis en nombres romains
+        var nombreRomain = ConvertisseurNombresRomains.Convertir(chiffreArabe);
+
+        // ALORS j'obtiens IV
+        Assert.Equal("IV", nombreRomain);
+    }
 }
