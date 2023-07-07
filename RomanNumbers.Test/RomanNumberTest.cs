@@ -88,4 +88,16 @@ public class RomanNumberTest
 
         Assert.Equal("XLI", nombreRomain);
     }
+
+    [Fact(DisplayName = "ETANT DONNE le chiffre 50 " +
+                        "QUAND je le convertis en nombres romains " +
+                        "ALORS j'obtiens L")]
+    public void TestCinquante()
+    {
+        const uint chiffreArabe = 50;
+
+        var nombreRomain = ConvertisseurNombresRomains.Convertir(chiffreArabe);
+
+        Assert.Equal("L", nombreRomain);
+    }
 }

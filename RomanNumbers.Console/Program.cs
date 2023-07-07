@@ -1,6 +1,11 @@
 ﻿using RomanNumbers;
-
 var quitter = false;
+
+for (uint i = 1; i <= 4000; i++)
+{
+    var résultat = ConvertisseurNombresRomains.Convertir(i);
+    Console.WriteLine($"La version romaine de {i} est {résultat}");
+}
 
 do
 {
