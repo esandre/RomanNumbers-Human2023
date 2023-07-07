@@ -42,4 +42,16 @@ public class RomanNumberTest
         var suiteDeI = new string('I', (int) nombreUnités - 5);
         Assert.Equal("V" + suiteDeI, nombreRomain);
     }
+
+    [Fact(DisplayName = "ETANT DONNE le chiffre 9 " +
+                        "QUAND je le convertis en nombres romains " +
+                        "ALORS j'obtiens IX")]
+    public void TestNeuf()
+    {
+        const uint chiffreArabe = 9;
+
+        var nombreRomain = ConvertisseurNombresRomains.Convertir(chiffreArabe);
+
+        Assert.Equal("IX", nombreRomain);
+    }
 }
