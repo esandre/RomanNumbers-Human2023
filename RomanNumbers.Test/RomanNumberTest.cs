@@ -68,7 +68,7 @@ public class RomanNumberTest
     [Fact(DisplayName = "ETANT DONNE le chiffre 40 " +
                         "QUAND je le convertis en nombres romains " +
                         "ALORS j'obtiens XL")]
-    public void TestQuinze()
+    public void TestQuarante()
     {
         const uint chiffreArabe = 40;
 
