@@ -40,33 +40,23 @@ public class RomanNumberTest
         Assert.Equal("IX", nombreRomain);
     }
 
-    [Theory(DisplayName = "ETANT DONNE un nombre <nombreUnités> compris entre 5 et 8 " +
+    [Theory(DisplayName = "ETANT DONNE un symbole <symbole> valant <valeurDeBase> " +
+                          "ET un nombre <nombreUnités> compris entre 0 et 3 au-dessus de cette valeur " +
                           "QUAND je le convertis en nombres romains " +
-                          "ALORS j'obtiens V plus <(nombreUnités-5)> fois I")]
-    [InlineData(5)]
-    [InlineData(6)]
-    [InlineData(7)]
-    [InlineData(8)]
-    public void TestCinqPlusUnité(uint nombreUnités)
+                          "ALORS j'obtiens <symbole> plus <(nombreUnités-valeurDeBase)> fois I")]
+    [InlineData('V', 5, 5)]
+    [InlineData('V', 5, 6)]
+    [InlineData('V', 5, 7)]
+    [InlineData('V', 5, 8)]
+    [InlineData('X', 10, 10)]
+    [InlineData('X', 10, 11)]
+    [InlineData('X', 10, 12)]
+    [InlineData('X', 10, 13)]
+    public void TestSymbolePlusUnité(char symbole, uint valeurDeBase, uint nombreUnités)
     {
         var nombreRomain = ConvertisseurNombresRomains.Convertir(nombreUnités);
 
-        var suiteDeI = new string('I', (int)nombreUnités - 5);
-        Assert.Equal("V" + suiteDeI, nombreRomain);
-    }
-
-    [Theory(DisplayName = "ETANT DONNE un nombre <nombreUnités> compris entre 10 et 13 " +
-                          "QUAND je le convertis en nombres romains " +
-                          "ALORS j'obtiens X plus <(nombreUnités-10)> fois I")]
-    [InlineData(10)]
-    [InlineData(11)]
-    [InlineData(12)]
-    [InlineData(13)]
-    public void TestDixPlusUnité(uint nombreUnités)
-    {
-        var nombreRomain = ConvertisseurNombresRomains.Convertir(nombreUnités);
-
-        var suiteDeI = new string('I', (int)nombreUnités - 10);
-        Assert.Equal("X" + suiteDeI, nombreRomain);
+        var suiteDeI = new string('I', (int)(nombreUnités - valeurDeBase));
+        Assert.Equal(symbole + suiteDeI, nombreRomain);
     }
 }
