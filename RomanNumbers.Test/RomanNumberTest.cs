@@ -100,4 +100,16 @@ public class RomanNumberTest
 
         Assert.Equal("L", nombreRomain);
     }
+
+    [Fact(DisplayName = "ETANT DONNE le chiffre 90 " +
+                        "QUAND je le convertis en nombres romains " +
+                        "ALORS j'obtiens XC")]
+    public void TestQuatreVingtDix()
+    {
+        const uint chiffreArabe = 90;
+
+        var nombreRomain = ConvertisseurNombresRomains.Convertir(chiffreArabe);
+
+        Assert.Equal("XC", nombreRomain);
+    }
 }
