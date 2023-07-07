@@ -42,7 +42,7 @@ public class RomanNumberTest
 
     public static readonly IEnumerable<object[]> CasSymbolePlusUnité = new[]
     {
-        new object[] { 'V', "test", 5 },
+        new object[] { 'V', 5, 5 },
         new object[] { 'V', 5, 6 },
         new object[] { 'V', 5, 7 },
         new object[] { 'V', 5, 8 },
@@ -63,5 +63,17 @@ public class RomanNumberTest
 
         var suiteDeI = new string('I', (int)(nombreUnités - valeurDeBase));
         Assert.Equal(symbole + suiteDeI, nombreRomain);
+    }
+
+    [Fact(DisplayName = "ETANT DONNE le chiffre 40 " +
+                        "QUAND je le convertis en nombres romains " +
+                        "ALORS j'obtiens XL")]
+    public void TestQuinze()
+    {
+        const uint chiffreArabe = 40;
+
+        var nombreRomain = ConvertisseurNombresRomains.Convertir(chiffreArabe);
+
+        Assert.Equal("XL", nombreRomain);
     }
 }
