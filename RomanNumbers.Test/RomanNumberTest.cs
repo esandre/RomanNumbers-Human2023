@@ -28,21 +28,6 @@ public class RomanNumberTest
         Assert.Equal("IV", nombreRomain);
     }
 
-    [Theory(DisplayName = "ETANT DONNE un nombre <nombreUnités> compris entre 5 et 8 " +
-                         "QUAND je le convertis en nombres romains " +
-                         "ALORS j'obtiens V plus <(nombreUnités-5)> fois I")]
-    [InlineData(5)]
-    [InlineData(6)]
-    [InlineData(7)]
-    [InlineData(8)]
-    public void TestCinqPlusUnité(uint nombreUnités)
-    {
-        var nombreRomain = ConvertisseurNombresRomains.Convertir(nombreUnités);
-        
-        var suiteDeI = new string('I', (int) nombreUnités - 5);
-        Assert.Equal("V" + suiteDeI, nombreRomain);
-    }
-
     [Fact(DisplayName = "ETANT DONNE le chiffre 9 " +
                         "QUAND je le convertis en nombres romains " +
                         "ALORS j'obtiens IX")]
@@ -55,11 +40,28 @@ public class RomanNumberTest
         Assert.Equal("IX", nombreRomain);
     }
 
-    [Theory(DisplayName = "ETANT DONNE un nombre <nombreUnités> compris entre 10 et 11 " +
+    [Theory(DisplayName = "ETANT DONNE un nombre <nombreUnités> compris entre 5 et 8 " +
+                          "QUAND je le convertis en nombres romains " +
+                          "ALORS j'obtiens V plus <(nombreUnités-5)> fois I")]
+    [InlineData(5)]
+    [InlineData(6)]
+    [InlineData(7)]
+    [InlineData(8)]
+    public void TestCinqPlusUnité(uint nombreUnités)
+    {
+        var nombreRomain = ConvertisseurNombresRomains.Convertir(nombreUnités);
+
+        var suiteDeI = new string('I', (int)nombreUnités - 5);
+        Assert.Equal("V" + suiteDeI, nombreRomain);
+    }
+
+    [Theory(DisplayName = "ETANT DONNE un nombre <nombreUnités> compris entre 10 et 13 " +
                           "QUAND je le convertis en nombres romains " +
                           "ALORS j'obtiens X plus <(nombreUnités-10)> fois I")]
     [InlineData(10)]
     [InlineData(11)]
+    [InlineData(12)]
+    [InlineData(13)]
     public void TestDixPlusUnité(uint nombreUnités)
     {
         var nombreRomain = ConvertisseurNombresRomains.Convertir(nombreUnités);
