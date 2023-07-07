@@ -1,3 +1,5 @@
+using System.Reflection;
+
 namespace RomanNumbers.Test;
 
 public class RomanNumberTest
@@ -42,7 +44,7 @@ public class RomanNumberTest
 
     public static readonly IEnumerable<object[]> CasSymbolePlusUnité = new[]
     {
-        new object[] { 'V', "test", 5 },
+        new object[] { 'V', 5, 5 },
         new object[] { 'V', 5, 6 },
         new object[] { 'V', 5, 7 },
         new object[] { 'V', 5, 8 },
@@ -52,16 +54,29 @@ public class RomanNumberTest
         new object[] { 'X', 10, 13 }
     };
 
-    [Theory(DisplayName = "ETANT DONNE un symbole <symbole> valant <valeurDeBase> " +
+    [Fact(DisplayName = "ETANT DONNE un symbole <symbole> valant <valeurDeBase> " +
                           "ET un nombre <nombreUnités> compris entre 0 et 3 au-dessus de cette valeur " +
                           "QUAND je le convertis en nombres romains " +
                           "ALORS j'obtiens <symbole> plus <(nombreUnités-valeurDeBase)> fois I")]
-    [MemberData(nameof(CasSymbolePlusUnité))]
-    public void TestSymbolePlusUnité(char symbole, uint valeurDeBase, uint nombreUnités)
+    public void TestSymbolePlusUnité()
     {
-        var nombreRomain = ConvertisseurNombresRomains.Convertir(nombreUnités);
+        const string nomPropriétéContenantLesCas = nameof(CasSymbolePlusUnité);
+        var myType = GetType();
+        var propriétéContenantLesCas = myType
+            .GetField(nomPropriétéContenantLesCas, 
+                BindingFlags.Static | BindingFlags.Public);
+        var valeurPropriétéContenantLesCas = (IEnumerable<object[]>) propriétéContenantLesCas?.GetValue(null)!;
 
-        var suiteDeI = new string('I', (int)(nombreUnités - valeurDeBase));
-        Assert.Equal(symbole + suiteDeI, nombreRomain);
+        foreach (var cas in valeurPropriétéContenantLesCas)
+        {
+            var symbole = (char) cas[0];
+            var valeurDeBase = Convert.ToUInt32(cas[1]);
+            var nombreUnités = Convert.ToUInt32(cas[2]);
+
+            var nombreRomain = ConvertisseurNombresRomains.Convertir(nombreUnités);
+
+            var suiteDeI = new string('I', (int)(nombreUnités - valeurDeBase));
+            Assert.Equal(symbole + suiteDeI, nombreRomain);
+        }
     }
 }
