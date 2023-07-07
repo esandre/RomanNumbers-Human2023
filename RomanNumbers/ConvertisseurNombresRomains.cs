@@ -9,6 +9,7 @@ public static class ConvertisseurNombresRomains
                4    => "IV",
                < 9  => "V" + Convertir(chiffreArabe - 5),
                9    => "IX",
-               _    => "X"
+               10    => "X",
+               _    => "X" + Convertir(chiffreArabe - 10),
            };
 }

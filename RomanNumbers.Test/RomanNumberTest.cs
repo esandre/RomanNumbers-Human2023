@@ -66,4 +66,16 @@ public class RomanNumberTest
 
         Assert.Equal("X", nombreRomain);
     }
+
+    [Fact(DisplayName = "ETANT DONNE le chiffre 11 " +
+                        "QUAND je le convertis en nombres romains " +
+                        "ALORS j'obtiens XI")]
+    public void TestOnze()
+    {
+        const uint chiffreArabe = 11;
+
+        var nombreRomain = ConvertisseurNombresRomains.Convertir(chiffreArabe);
+
+        Assert.Equal("XI", nombreRomain);
+    }
 }
