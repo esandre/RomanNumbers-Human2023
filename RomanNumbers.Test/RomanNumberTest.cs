@@ -55,27 +55,16 @@ public class RomanNumberTest
         Assert.Equal("IX", nombreRomain);
     }
 
-    [Fact(DisplayName = "ETANT DONNE le chiffre 10 " +
-                        "QUAND je le convertis en nombres romains " +
-                        "ALORS j'obtiens X")]
-    public void TestDix()
+    [Theory(DisplayName = "ETANT DONNE un nombre <nombreUnités> compris entre 10 et 11 " +
+                          "QUAND je le convertis en nombres romains " +
+                          "ALORS j'obtiens X plus <(nombreUnités-10)> fois I")]
+    [InlineData(10)]
+    [InlineData(11)]
+    public void TestDixPlusUnité(uint nombreUnités)
     {
-        const uint chiffreArabe = 10;
+        var nombreRomain = ConvertisseurNombresRomains.Convertir(nombreUnités);
 
-        var nombreRomain = ConvertisseurNombresRomains.Convertir(chiffreArabe);
-
-        Assert.Equal("X", nombreRomain);
-    }
-
-    [Fact(DisplayName = "ETANT DONNE le chiffre 11 " +
-                        "QUAND je le convertis en nombres romains " +
-                        "ALORS j'obtiens XI")]
-    public void TestOnze()
-    {
-        const uint chiffreArabe = 11;
-
-        var nombreRomain = ConvertisseurNombresRomains.Convertir(chiffreArabe);
-
-        Assert.Equal("XI", nombreRomain);
+        var suiteDeI = new string('I', (int)nombreUnités - 10);
+        Assert.Equal("X" + suiteDeI, nombreRomain);
     }
 }
