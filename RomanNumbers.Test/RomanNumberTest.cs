@@ -54,4 +54,16 @@ public class RomanNumberTest
 
         Assert.Equal("IX", nombreRomain);
     }
+
+    [Fact(DisplayName = "ETANT DONNE le chiffre 10 " +
+                        "QUAND je le convertis en nombres romains " +
+                        "ALORS j'obtiens X")]
+    public void TestDix()
+    {
+        const uint chiffreArabe = 10;
+
+        var nombreRomain = ConvertisseurNombresRomains.Convertir(chiffreArabe);
+
+        Assert.Equal("X", nombreRomain);
+    }
 }
