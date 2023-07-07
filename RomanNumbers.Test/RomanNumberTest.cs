@@ -76,4 +76,16 @@ public class RomanNumberTest
 
         Assert.Equal("XL", nombreRomain);
     }
+
+    [Fact(DisplayName = "ETANT DONNE le chiffre 41 " +
+                        "QUAND je le convertis en nombres romains " +
+                        "ALORS j'obtiens XLI")]
+    public void TestQuaranteEtUn()
+    {
+        const uint chiffreArabe = 41;
+
+        var nombreRomain = ConvertisseurNombresRomains.Convertir(chiffreArabe);
+
+        Assert.Equal("XLI", nombreRomain);
+    }
 }
